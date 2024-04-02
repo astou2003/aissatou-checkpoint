@@ -1,0 +1,26 @@
+-- Table des clients
+
+create database check1_SQL ;
+USE check1_SQL;
+CREATE TABLE 
+   clients (customer_id INTEGER PRIMARY KEY,
+    nom VARCHAR(50) NOT NULL,
+    adresse VARCHAR(100) NOT NULL);
+
+-- Table des produits
+CREATE TABLE 
+  produits (product_id INTEGER PRIMARY KEY,
+    nom VARCHAR(150) NOT NULL,
+     prix DECIMAL NOT NULL CHECK (prix > 0));
+
+-- Table des commandes
+CREATE TABLE 
+   commandes (order_id INTEGER PRIMARY KEY,
+    customer_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    quantite INTEGER NOT NULL,
+    order_date DATE NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES clients(customer_id),
+    FOREIGN KEY (product_id) REFERENCES produits(product_id));
+    
+    SELECT * FROM clients
